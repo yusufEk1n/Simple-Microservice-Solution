@@ -28,3 +28,27 @@ services:
       - DB_NAME=customer
       - DB_PASSWORD=password@12345#
       - DB_USERID=sa
+
+  productdb:
+    container_name: product-db
+    image: mysql:8.0.32-oracle
+    environment:
+      - MYSQL_ROOT_PASSWORD=password@12345#
+    networks:
+      - backend
+    ports:
+      - 8003:3306
+
+  productwebapi:
+    container_name: product-api
+    image: ${DOCKER_REGISTRY-}productwebapi
+    build: Microservices/ProductWebApi
+    networks:
+      - backend
+    ports:
+      - 8004:80
+    environment:
+      - DB_HOST=productdb
+      - DB_NAME=product
+      - DB_PASSWORD=password@12345#
+      - DB_USERID=root
