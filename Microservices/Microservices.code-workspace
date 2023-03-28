@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "./ProductWebApi"
+		},
+		{
+			"path": "./OrderWebApi"
 		}
 	],
 	"settings": {}
