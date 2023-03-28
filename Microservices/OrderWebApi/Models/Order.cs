@@ -11,9 +11,9 @@ namespace OrderWebApi.Models
         public string OrderId { get; set; }
         [BsonElement("customer_id"), BsonRepresentation(BsonType.Int32)]
         public int CustomerId { get; set; }
-        [BsonElement("order_on"), BsonRepresentation(BsonType.DateTime)]
+        [BsonElement("order_on"), BsonRepresentation(BsonType.DateTime)]    
         public DateTime OrderOn { get; set; }
-        
-        // public List<OrderDetail> OrderDetails { get; set; }
+        [BsonElement("order_details")]
+        public List<OrderDetail> OrderDetails { get; set; }
     }
 }
