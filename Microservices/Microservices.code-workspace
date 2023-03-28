@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "./CustomerWebApi"
+		},
+		{
+			"path": "./ProductWebApi"
 		}
 	],
 	"settings": {}
