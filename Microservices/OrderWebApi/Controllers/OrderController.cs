@@ -13,7 +13,10 @@ namespace OrderWebApi.Controller
         {
             var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
             var dbName = Environment.GetEnvironmentVariable("DB_NAME");
-            var connectionString = $"mongodb://{dbHost}:27017/{dbName}";
+            var dbUserId = Environment.GetEnvironmentVariable("DB_USERID");
+            var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
+
+            var connectionString = $"mongodb://{dbUserId}:{dbPassword}@{dbHost}:27017/{dbName}?authSource=admin";
 
             var mongoUrl = MongoUrl.Create(connectionString);
             var client = new MongoClient(mongoUrl);

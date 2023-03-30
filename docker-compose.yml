@@ -52,3 +52,28 @@ services:
       - DB_NAME=product
       - DB_PASSWORD=password@12345#
       - DB_USERID=root
+  
+  orderdb:
+    container_name: order-db
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password12345#
+    networks:
+      - backend
+    ports:
+      - 8005:27017
+
+  orderwebapi:
+    container_name: order-api
+    image: ${DOCKER_REGISTRY-}orderwebapi
+    build: Microservices/OrderWebApi
+    networks:
+      - backend
+    ports:
+      - 8006:80
+    environment:
+      - DB_HOST=orderdb
+      - DB_NAME=order
+      - DB_PASSWORD=password12345#
+      - DB_USERID=root
